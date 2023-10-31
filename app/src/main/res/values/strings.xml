@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FitLife</string>
+    <string name="label_imc">IMC</string>
+</resources>
