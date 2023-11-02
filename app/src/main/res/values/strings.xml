@@ -9,4 +9,12 @@
     <string name="calc">Calcular</string>
     <string name="fields_messages">Todos os campos devem ser maiores que zero</string>
 
+    <string name="imc_severamente_abaixo">Severamente abaixo do peso</string>
+    <string name="imc_muito_baixo">Muito abaixo do peso</string>
+    <string name="imc_abaixo">Abaixo do peso</string>
+    <string name="imc_normal">Normal</string>
+    <string name="imc_acima">Acima do peso</string>
+    <string name="imc_moderadamente_acima">Moderadamente obeso</string>
+    <string name="imc_severamente_acima">Severamente obeso</string>
+    <string name="imc_extremamente_obeso">Extremamente obeso</string>
 </resources>
