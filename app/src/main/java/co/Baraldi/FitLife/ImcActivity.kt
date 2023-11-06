@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.StringRes
 
 class ImcActivity : AppCompatActivity() {
 
@@ -35,7 +36,7 @@ class ImcActivity : AppCompatActivity() {
             Toast.makeText(this, imcResponseId, Toast.LENGTH_SHORT).show()
         }
     }
-
+    @StringRes
     private fun imcResponse(imc: Double): Int {
         when {
             imc < 15.0 -> return R.string.imc_severamente_abaixo
