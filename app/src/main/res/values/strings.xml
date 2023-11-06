@@ -17,4 +17,6 @@
     <string name="imc_moderadamente_acima">Moderadamente obeso</string>
     <string name="imc_severamente_acima">Severamente obeso</string>
     <string name="imc_extremamente_obeso">Extremamente obeso</string>
+
+    <string name="imc_response"> Seu IMC é: %1$.2f</string>
 </resources>

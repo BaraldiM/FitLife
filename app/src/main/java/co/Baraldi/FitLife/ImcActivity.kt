@@ -1,12 +1,16 @@
 package co.Baraldi.FitLife
 
+import android.content.Context
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 
 class ImcActivity : AppCompatActivity() {
 
@@ -33,9 +37,24 @@ class ImcActivity : AppCompatActivity() {
             Log.d("teste", "resultado: $result")
 
             val imcResponseId = imcResponse(result)
-            Toast.makeText(this, imcResponseId, Toast.LENGTH_SHORT).show()
+            val dialog = AlertDialog.Builder(this)
+
+            dialog.setTitle(getString(R.string.imc_response,result))
+            dialog.setMessage(R.string.calc)
+            dialog.setPositiveButton(android.R.string.ok
+            ) { dialog, which -> }
+
+                .create()
+                .show()
+
+            val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+
         }
+
+
     }
+
     @StringRes
     private fun imcResponse(imc: Double): Int {
         when {
