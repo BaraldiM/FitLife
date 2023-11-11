@@ -67,6 +67,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 2 -> {
+                    val intent = Intent(this@MainActivity, tmbActivity::class.java)
+                    startActivity(intent)
                     // abrir uma outra activity
                 }
             }

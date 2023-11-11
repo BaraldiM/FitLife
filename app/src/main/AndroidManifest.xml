@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitLife">
         <activity android:name=".ImcActivity"></activity>
+        <activity android:name=".tmbActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

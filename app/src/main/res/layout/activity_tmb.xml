@@ -21,7 +21,7 @@
 
 
         <EditText
-            android:id="@+id/edit_tbm_weight"
+            android:id="@+id/edit_tmb_weight"
             style="@style/EditTextForm"
 
             android:hint="@string/weight" />
@@ -32,7 +32,7 @@
             android:hint="@string/height"/>
 
         <EditText
-            android:id="@+id/edit_tmb_ag"
+            android:id="@+id/edit_tmb_age"
             style="@style/EditTextForm"
             android:hint="@string/age"/>
 
