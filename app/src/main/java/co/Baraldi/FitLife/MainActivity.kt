@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity() {
         mainItems.add(
             MainItem(
                 id = 1,
-                drawableId = R.drawable.ic_baseline_wb_sunny_24,
+                drawableId = R.drawable.ic_regua,
                 textStringId = R.string.label_imc,
-                color = Color.YELLOW
+                color = Color.WHITE
             )
         )
         mainItems.add(
             MainItem(
                 id = 2,
-                drawableId = R.drawable.ic_baseline_wb_sunny_24,
+                drawableId = R.drawable.ic_ginasio,
                 textStringId = R.string.label_tbm,
-                color = Color.GREEN
+                color = Color.WHITE
             )
         )
 
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 id = 3,
                 drawableId = R.drawable.ic_baseline_wb_sunny_24,
                 textStringId = R.string.label_bf,
-                color = Color.MAGENTA
+                color = Color.WHITE
             )
         )
 
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 id = 3,
                 drawableId = R.drawable.ic_baseline_wb_sunny_24,
                 textStringId = R.string.label_bf,
-                color = Color.CYAN
+                color = Color.WHITE
             )
         )
 
