@@ -6,9 +6,11 @@
     <string name="string_imc_desc">IMC é a sigla para Índice de Massa Corporal que serve para avaliar o peso
         do indivíduo em relação à sua altura e assim indicar se está dentro do peso ideal,
         acima ou abaixo do peso desejado.\n\nPreencha os campos de peso e altura para descobrir o seu IMC</string>
+    <string name="string_tmb_desc">A Taxa Metabólica Basal (TMB) é o mínimo de energia necessária para manter as funções do organismo em repouso, como os batimentos cardíacos, a pressão arterial, a respiração e a manutenção da temperatura corporal.\n\nPreencha os campos de peso e altura para descobrir o seu IMC</string>
     <string name="weight">Peso (KG)</string>
     <string name="height">Altura (cm)</string>
     <string name="calc">Calcular</string>
+    <string name="age">Idade</string>
     <string name="fields_messages">Todos os campos devem ser maiores que zero</string>
 
     <string name="imc_severamente_abaixo">Severamente abaixo do peso</string>
