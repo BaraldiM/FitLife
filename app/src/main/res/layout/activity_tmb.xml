@@ -35,6 +35,18 @@
             android:id="@+id/edit_tmb_age"
             style="@style/EditTextForm"
             android:hint="@string/age"/>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/AutoTextViewForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_lyfestyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button

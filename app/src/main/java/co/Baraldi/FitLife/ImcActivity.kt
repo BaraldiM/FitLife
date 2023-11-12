@@ -2,9 +2,12 @@ package co.Baraldi.FitLife
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -15,6 +18,7 @@ import androidx.room.Dao
 import co.Baraldi.FitLife.model.Calc
 
 class ImcActivity : AppCompatActivity() {
+
 
     private lateinit var editWeight: EditText
     private lateinit var editHeight: EditText
@@ -55,7 +59,8 @@ class ImcActivity : AppCompatActivity() {
                         dao.insert(Calc(type = "imc", res = result ))
 
                          runOnUiThread{
-                         Toast.makeText(this@ImcActivity, R.string.saved, Toast.LENGTH_LONG).show()
+                             openListActivity()
+
                          }
 
                     }.start()
@@ -72,6 +77,25 @@ class ImcActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.imc_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.imc_menu_search){
+            finish()
+            openListActivity()
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    private fun openListActivity(){
+        val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
+        intent.putExtra("type", "imc")
+        startActivity(intent)
     }
 
     @StringRes
