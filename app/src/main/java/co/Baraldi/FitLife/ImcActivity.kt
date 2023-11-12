@@ -11,6 +11,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import androidx.room.Dao
+import co.Baraldi.FitLife.model.Calc
 
 class ImcActivity : AppCompatActivity() {
 
@@ -25,6 +27,7 @@ class ImcActivity : AppCompatActivity() {
         editHeight = findViewById(R.id.edit_imc_height)
 
         val btnSend: Button = findViewById(R.id.btn_imc_send)
+
         btnSend.setOnClickListener {
             if (!validate()) {
                 Toast.makeText(this, R.string.fields_messages, Toast.LENGTH_SHORT).show()
@@ -33,17 +36,33 @@ class ImcActivity : AppCompatActivity() {
             }
             val weight = editWeight.text.toString().toInt()
             val height = editHeight.text.toString().toInt()
+
             val result = calculateImc(weight, height)
             Log.d("teste", "resultado: $result")
 
             val imcResponseId = imcResponse(result)
-            val dialog = AlertDialog.Builder(this)
 
-            dialog.setTitle(getString(R.string.imc_response,result))
-            dialog.setMessage(R.string.calc)
-            dialog.setPositiveButton(android.R.string.ok
-            ) { dialog, which -> }
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.imc_response, result))
+                .setMessage(imcResponseId)
+                .setPositiveButton(android.R.string.ok){ dialog, which ->
 
+                }
+                .setNegativeButton(R.string.save){dialog, which ->
+                    Thread{
+                        val app = application as App
+                        val dao = app.db.calcDao()
+                        dao.insert(Calc(type = "imc", res = result ))
+
+                         runOnUiThread{
+                         Toast.makeText(this@ImcActivity, R.string.saved, Toast.LENGTH_LONG).show()
+                         }
+
+                    }.start()
+
+
+
+                }
                 .create()
                 .show()
 
