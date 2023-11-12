@@ -40,24 +40,24 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        mainItems.add(
-            MainItem(
-                id = 3,
-                drawableId = R.drawable.ic_baseline_wb_sunny_24,
-                textStringId = R.string.label_bf,
-                color = Color.WHITE
-            )
-        )
-
-
-        mainItems.add(
-            MainItem(
-                id = 3,
-                drawableId = R.drawable.ic_baseline_wb_sunny_24,
-                textStringId = R.string.label_bf,
-                color = Color.WHITE
-            )
-        )
+//        mainItems.add(
+//            MainItem(
+//                id = 3,
+//                drawableId = R.drawable.ic_baseline_wb_sunny_24,
+//                textStringId = R.string.label_bf,
+//                color = Color.WHITE
+//            )
+//        )
+//
+//
+//        mainItems.add(
+//            MainItem(
+//                id = 3,
+//                drawableId = R.drawable.ic_baseline_wb_sunny_24,
+//                textStringId = R.string.label_bf,
+//                color = Color.WHITE
+//            )
+//        )
 
         val adapter = MainAdapter(mainItems) { id ->
             // METODO 3: IMPL VIA FUNCTIONS

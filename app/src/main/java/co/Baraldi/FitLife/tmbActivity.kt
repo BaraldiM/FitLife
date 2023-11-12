@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import co.Baraldi.FitLife.model.Calc
 
 class tmbActivity : AppCompatActivity() {
 
@@ -45,31 +46,44 @@ class tmbActivity : AppCompatActivity() {
             }
 
 
-
-
             val weight = editWeight.text.toString().toInt()
             val height = editHeight.text.toString().toInt()
             val age = editage.text.toString().toInt()
             val result = calculatetmb(weight, height, age)
             val response = tmbRequest(result)
 
-            Log.d("teste", "resultado: $result")
+            AlertDialog.Builder(this)
+                .setMessage(getString(R.string.tmb_response, response))
+                .setPositiveButton(android.R.string.ok) { dialog, which ->
+                }
+                .setNegativeButton(R.string.save) { dialog, which ->
+                    Thread {
+                        val app = application as App
+                        val dao = app.db.calcDao()
+                        dao.insert(Calc(type = "tmb", res = response))
 
+                        runOnUiThread {
+                            openListActivity()
+
+                        }
+
+                    }.start()
+
+
+                }
+                .create()
+                .show()
+
+            val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+
+            Log.d("teste", "resultado: $result")
 
 
         }
 
 
     }
-
-
-
-
-    private fun calculateImc(weight: Int, height: Int, age: Int): Double {
-        //peso / (altura * altura * idade)
-        return weight / ((height / 100.0) * (height / 100.0) * age)
-    }
-
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -78,34 +92,35 @@ class tmbActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.imc_menu_search){
+        if (item.itemId == R.id.imc_menu_search) {
             finish()
             openListActivity()
 
         }
         return super.onOptionsItemSelected(item)
     }
-    private fun openListActivity(){
+
+    private fun openListActivity() {
         val intent = Intent(this, ListCalcActivity::class.java)
-        intent.putExtra("type", "imc")
+        intent.putExtra("type", "tmb")
         startActivity(intent)
     }
 
-    private fun tmbRequest(tmb: Double) : Double {
+    private fun tmbRequest(tmb: Double): Double {
         val items = resources.getStringArray(R.array.tbm_lyfestyles)
         return when {
             lifestyle.text.toString() == items[0] -> tmb * 1.2
             lifestyle.text.toString() == items[1] -> tmb * 1.375
             lifestyle.text.toString() == items[2] -> tmb * 1.55
             lifestyle.text.toString() == items[3] -> tmb * 1.725
-            lifestyle.text.toString() == items[4] -> tmb * 1.2
+            lifestyle.text.toString() == items[4] -> tmb * 1.9
             else -> 0.0
         }
     }
 
 
     private fun calculatetmb(weight: Int, height: Int, age: Int): Double {
-        return 66 * (13.8 * weight) + (5 * height) - (6-8 * age)
+        return 66 + (13.8 * weight) + (5 * height) - (6.8 * age)
     }
 
 
